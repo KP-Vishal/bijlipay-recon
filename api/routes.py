@@ -12,7 +12,7 @@ from pydantic import BaseModel
 from sqlalchemy import text
 
 from db.repository import ReconRepository
-from main import run_pipeline
+#from main import run_pipeline
 
 logger = logging.getLogger(__name__)
 
@@ -70,14 +70,14 @@ async def trigger_recon(req: RunRequest, background_tasks: BackgroundTasks):
     except ValueError:
         raise HTTPException(status_code=400, detail=f"Invalid date format: {req.recon_date}")
 
-    background_tasks.add_task(
-        run_pipeline,
-        db_url=DB_URL,
-        recon_date=recon_date,
-        input_dir=req.input_dir,
-        output_dir=req.output_dir or OUTPUT_DIR,
-        force=req.force or False,
-    )
+# background_tasks.add_task(
+#     run_pipeline,
+#     db_url=DB_URL,
+#     recon_date=recon_date,
+#     input_dir=req.input_dir,
+#     output_dir=req.output_dir or OUTPUT_DIR,
+#     force=req.force or False,
+# )
 
     return RunResponse(
         recon_date=req.recon_date,

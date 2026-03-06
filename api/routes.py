@@ -23,8 +23,8 @@ _db = os.getenv("DATABASE_URL", "postgresql://bijlipay:bijlipay@localhost:5432/r
 DB_URL = _db.replace("postgres://", "postgresql://", 1) if _db.startswith("postgres://") else _db
 OUTPUT_DIR = os.getenv("OUTPUT_DIR", "./output")
 
-def get_repo():
-return ReconRepository(DB_URL)
+def get_repository():
+    return ReconRepository(DB_URL)
 
 # -----------------------------
 

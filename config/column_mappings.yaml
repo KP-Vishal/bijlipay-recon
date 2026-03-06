@@ -1,0 +1,273 @@
+# ============================================================
+# Bijlipay Reconciliation Engine - Column Mappings
+# Edit this file to remap columns without changing any code
+# ============================================================
+
+# FILE 1 & 2 — Jupiter / OGS ATF (Middleware files)
+# These are xlsx/xlsb files. Loader will auto-detect.
+jupiter_atf:
+  file_pattern: "TransactionList_*"
+  file_type: "xlsx"
+  rail: "DQR"
+  columns:
+    rrn: "RRN"
+    order_id: "ORDERID"
+    txn_id: "TXNID"
+    amount: "AMOUNT"
+    response_code: "RESPCODE"
+    txn_date: "TXN_DATE"
+    merchant_id: "MERCHANT_ID"
+    vpa: "VPA"
+    creditvpa: "CREDITVPA"
+
+ogs_atf:
+  file_pattern: "Transaction_Report_*"
+  file_type: "xlsb"
+  rail: "DQR"
+  columns:
+    rrn: "RRN"
+    order_id: "ORDERID"
+    txn_id: "TXNID"
+    amount: "AMOUNT"
+    response_code: "RESPCODE"
+    txn_date: "TXN_DATE"
+    merchant_id: "MERCHANT_ID"
+    vpa: "VPA"
+    creditvpa: "CREDITVPA"
+
+# FILE 3 — Axis Settlement (SQR)
+axis_settlement_sqr:
+  file_pattern: "AxisSettlement_*"
+  file_type: "csv"
+  rail: "SQR"
+  columns:
+    rrn: "RRN"
+    txn_id: "TXNID"
+    order_id: "ORDERID"
+    amount: "AMOUNT"
+    response_code: "RESPCODE"
+    txn_date: "TXN_DATE"
+    merchant_id: "MERCHANT_ID"
+    creditvpa: "CREDITVPA"
+    settlement_status: "SETTLEMENT_STATUS"
+
+# FILE 4 — UPI Settlement Jupiter
+upi_settlement_jupiter:
+  file_pattern: "UPI_Settlement-*Jupiter*"
+  file_type: "csv"
+  rail: "DQR"
+  columns:
+    rrn: "RRN"
+    txn_id: "TXNID"
+    order_id: "ORDERID"
+    amount: "AMOUNT"
+    response_code: "RESPCODE"
+    txn_date: "TXN_DATE"
+    merchant_id: "MERCHANT_ID"
+    creditvpa: "CREDITVPA"
+    settlement_status: "SETTLEMENT_STATUS"
+
+# FILE 5 — UPI Settlement OGS
+upi_settlement_ogs:
+  file_pattern: "UPI_Settlement-*.csv"
+  file_type: "csv"
+  rail: "DQR"
+  columns:
+    rrn: "RRN"
+    txn_id: "TXNID"
+    order_id: "ORDERID"
+    amount: "AMOUNT"
+    response_code: "RESPCODE"
+    txn_date: "TXN_DATE"
+    merchant_id: "MERCHANT_ID"
+    creditvpa: "CREDITVPA"
+    settlement_status: "SETTLEMENT_STATUS"
+
+# FILE 6 — Offline Refund
+offline_refund:
+  file_pattern: "OffilineRefund-*"
+  file_type: "csv"
+  columns:
+    tid: "TID"
+    stan: "STAN"
+    pan: "PAN"
+    txn_date: "TXN DATE"
+    refund_amount: "REFUND AMOUNT"
+    rrn: "RRNumber"
+    identifier: "Identifier"
+
+# FILE 7 — UPI Cancel Transactions
+upi_cancel:
+  file_pattern: "UPI_cancel_Txns-*"
+  file_type: "csv"
+  columns:
+    order_id: "ORDERID"
+    creditvpa: "CREDITVPA"
+    amount: "AMOUNT"
+    terminal_id: "TERMINAL_ID"
+    merchant_id: "MERCHANT_ID"
+    txn_date: "TXN_DATE"
+    cancel_type: "CANCEL_TYPE"
+
+# FILE 8 — Worldline Aggregator Report
+wl_aggregator:
+  file_pattern: "*Bijlipay_Aggr_Report*"
+  file_type: "csv"
+  rail: "CARD"
+  columns:
+    merchant_id: "MERCHANT_ID"
+    terminal_id: "TERMINAL_ID"
+    merchant_name: "MERCHANT_NAME"
+    card_number: "CARD_NUMBER"
+    transaction_type: "TRANSACTION_TYPE"
+    amount: "TRANSACTION_AMOUNT"
+    txn_date: "TRANSACTION_DATE"
+    txn_time: "TRANSACTION_TIME"
+    rrn: "RRN"
+    auth_id: "AUTH_ID"
+    interchange_type: "INTERCHANGE_TYPE"
+    pos_entry_mode: "POS_ENTRY_MODE"
+    credit_debit_flag: "CREDIT_DEBIT_FLAG"
+    stan: "STAN"
+
+# FILE 8b — Axis Aggregator with ACK (internal aggregator DB export)
+axis_aggregator_ack:
+  file_pattern: "axis_aggre_*"
+  file_type: "csv"
+  rail: "CARD"
+  columns:
+    id: "id"
+    merchant_id: "merchant_id"
+    terminal_id: "terminal_id"
+    merchant_name: "merchant_name"
+    card_number: "card_number"
+    transaction_type: "transaction_type"
+    amount: "transaction_amount"
+    txn_date: "transaction_date"
+    txn_time: "transaction_time"
+    rrn: "rrn"
+    auth_id: "auth_id"
+    interchange_type: "interchange_type"
+    pos_entry_mode: "pos_entry_mode"
+    stan: "stan"
+    ack_received: "ack_received"
+    ack_enabled: "ack_enabled"
+
+# FILE 9 — Worldline ATF
+wl_atf:
+  file_pattern: "AxisBijliPay_*"
+  file_type: "csv"
+  rail: "CARD"
+  columns:
+    merchant_id: "merchant_id"
+    terminal_id: "terminal_id"
+    merchant_name: "merchant_name"
+    card_number: "card_number"
+    transaction_type: "transaction_type"
+    amount: "transaction_amount"
+    txn_date: "transaction_date"
+    txn_time: "transaction_time"
+    rrn: "rrn"
+    auth_id: "auth_id"
+    response_code: "response_code"
+    interchange_type: "interchange_type"
+    stan: "stan"
+    pos_entry_mode: "pos_entry_mode"
+
+# FILE 10 — Axis MPR
+axis_mpr:
+  file_pattern: "*_MPR_FILE_*"
+  file_type: "csv"
+  encoding: "iso-8859-1"
+  columns:
+    terminal_id: "TERM_ID"
+    txn_date: "TRAN_DATE"
+    txn_time: "TRAN_TIME"
+    batch_no: "BATCH_NO"
+    card_type: "CARD_TYPE"
+    card_no: "CARD_NO"
+    auth_id: "APPROVE_CODE"
+    rrn: "RRN"
+    gross_amount: "GROSS_AMT"
+    mdr_pct: "MDR %"
+    mdr: "MDR"
+    net_amount: "NET_AMT"
+    merchant_id: "MID"
+    utr: "UTR"
+    settlement_date: "Settlement_Date"
+
+# FILE 11 — Bank Statement
+bank_statement:
+  file_pattern: "*BANK_STATMEMNT*"
+  file_type: "csv"
+  columns:
+    date: "Date "
+    value_date: "Value date"
+    description: "Description"
+    amount: "Amount"
+    dr_cr: "DR/CR"
+    ledger_balance: "Ledger Balance"
+    branch: "Branch"
+    remarks: "Remarks"
+
+# FILE 12 — Axis MIS Bulk (Dynamic QR)
+mis_dynamic:
+  file_pattern: "*Dynamic*"
+  file_type: "csv"
+  rail: "DQR"
+  columns:
+    rrn: "RRN"
+    txn_id: "TXNID"
+    order_id: "ORDERID"
+    amount: "AMOUNT"
+    response_code: "RESPCODE"
+    txn_date: "TXN_DATE"
+    creditvpa: "CREDITVPA"
+
+# FILE 13 — Axis MIS Instant (Static QR)
+mis_static:
+  file_pattern: "*static*"
+  file_type: "csv"
+  rail: "SQR"
+  columns:
+    rrn: "RRN"
+    txn_id: "TXNID"
+    order_id: "ORDERID"
+    amount: "AMOUNT"
+    response_code: "RESPCODE"
+    txn_date: "TXN_DATE"
+    creditvpa: "CREDITVPA"
+
+# FILE 14 — Bulk Settlement File (pipe-separated)
+bulk_settlement:
+  file_pattern: "UPI_Sett_BIJLIPAY_*"
+  file_type: "csv"
+  separator: "|"
+  columns:
+    rrn: "RRN"
+    txn_id: "TXNID"
+    order_id: "ORDERID"
+    amount: "AMOUNT"
+    response_code: "RESPCODE"
+    txn_date: "TXN_DATE"
+    merchant_id: "MERCHANT_ID"
+    creditvpa: "CREDITVPA"
+
+# UPI Refund (pipe-separated)
+upi_refund:
+  file_pattern: "UPI_Refund_BIJLIPAY_*"
+  file_type: "csv"
+  separator: "|"
+  columns:
+    rrn: "RRN"
+    refund_id: "REFUNDID"
+    txn_id: "TXNID"
+    order_id: "ORDERID"
+    amount: "AMOUNT"
+    response_code: "RESPCODE"
+    txn_date: "TRANSACTION_DATE"
+    refund_amount: "REFUND_AMOUNT"
+    txn_ref_date: "TXN_REF_DATE"
+    merchant_id: "MERCHANT_ID"
+    creditvpa: "CREDITVPA"
+    refund_type: "REFUND_TYPE"

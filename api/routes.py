@@ -13,7 +13,7 @@ from pydantic import BaseModel
 from db.repository import ReconRepository
 from main import run_pipeline
 
-logger = logging.getLogger(**name**)
+logger = logging.getLogger(__name__)
 
 # This is the IMPORTANT line your server.py expects
 

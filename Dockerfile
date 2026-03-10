@@ -13,7 +13,8 @@ COPY . .
 RUN mkdir -p /app/output /app/input
 
 ENV PYTHONPATH=/app
+ENV OUTPUT_DIR=/app/output
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "uvicorn api.api.server:app --host 0.0.0.0 --port $PORT"]
+CMD ["python", "-m", "uvicorn", "api.routes:app", "--host", "0.0.0.0", "--port", "8000"]

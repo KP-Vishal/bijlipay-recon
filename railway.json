@@ -11,12 +11,3 @@
     "restartPolicyMaxRetries": 3
   }
 }
-```
-
-**STEP 5 — Click "Commit changes"**
-
-Railway will automatically redeploy. Watch the service — it should go from **Online** to **Deploying** and back to **Online**.
-
-**STEP 6 — Test it:**
-```
-https://web-production-c8a69.up.railway.app/health
